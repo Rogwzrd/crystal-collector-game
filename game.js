@@ -17,10 +17,18 @@ var gems = {
     refreshPurpleGem: true
 };
 
+
+function updateScore() {
+    $(".current-score").text(currentScore);
+    $(".target-score").text(targetScore);
+
+}
+
 function gameState() {
     //this line determines whether a game is won or lost on click
     if (targetScore < currentScore) {
         losses++;
+        $(".losses").text(losses);
         gameStart();
         alert("Oh shucks! My pickaxe broke!")
 
@@ -28,13 +36,14 @@ function gameState() {
     //this line runs if your target score and the current score match
     if (targetScore === currentScore) {
         wins++;
+        $(".wins").text(wins);
         gameStart();
         alert("We're gonna be rich!")
     }
 }
 
 function gameStart() {
-    targetScore = Math.floor(Math.random() * 75) + 25;
+    targetScore = Math.floor(Math.random() * 100) + 25;
     currentScore = 0;
     gems.refreshRedGem = true;
     gems.refreshBlueGem = true;
@@ -50,7 +59,9 @@ $(document).ready(function() {
         if (gems.refreshRedGem === true) {
             gems.redGem = Math.floor(Math.random() * 13) + 1;
             gems.refreshRedGem = false;
-            console.log(gems.redGem)
+            console.log(gems.redGem);
+
+
         }
 
         //this line runs if your score is below the target score
@@ -58,8 +69,9 @@ $(document).ready(function() {
             console.log(gems.redGem);
             currentScore = currentScore + gems.redGem;
             console.log("my target score is: " + targetScore);
-            console.log("my current score is: " + currentScore)
+            console.log("my current score is: " + currentScore);
         }
+        updateScore();
         gameState();
     });
 
@@ -67,7 +79,7 @@ $(document).ready(function() {
         if (gems.refreshBlueGem === true) {
             gems.blueGem = Math.floor(Math.random() * 13) + 1;
             gems.refreshBlueGem = false;
-            console.log(gems.blueGem)
+            console.log(gems.blueGem);
         }
 
         //this line runs if your score is below the target score
@@ -77,6 +89,7 @@ $(document).ready(function() {
             console.log("my target score is: " + targetScore);
             console.log("my current score is: " + currentScore)
         }
+        updateScore();
         gameState();
     });
 
@@ -84,7 +97,7 @@ $(document).ready(function() {
         if (gems.refreshGreenGem === true) {
             gems.greenGem = Math.floor(Math.random() * 13) + 1;
             gems.refreshGreenGem = false;
-            console.log(gems.greenGem)
+            console.log(gems.greenGem);
         }
 
         //this line runs if your score is below the target score
@@ -94,6 +107,7 @@ $(document).ready(function() {
             console.log("my target score is: " + targetScore);
             console.log("my current score is: " + currentScore)
         }
+        updateScore();
         gameState();
     });
 
@@ -111,9 +125,12 @@ $(document).ready(function() {
             console.log("my target score is: " + targetScore);
             console.log("my current score is: " + currentScore)
         }
+        updateScore();
         gameState();
+
     });
 
-    console.log(gems.refreshGem)
-
+        updateScore();
+        gameState();
+        console.log("check me out")
 })
