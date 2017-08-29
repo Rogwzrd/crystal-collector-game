@@ -17,13 +17,13 @@ var gems = {
     refreshPurpleGem: true
 };
 
-
+//function updates the score text it is nested insde of onclick functions to run when a gem is pressed
 function updateScore() {
     $(".current-score").text(currentScore);
     $(".target-score").text(targetScore);
 
 }
-
+//function updates the current game state
 function gameState() {
     //this line determines whether a game is won or lost on click
     if (targetScore < currentScore) {
@@ -41,7 +41,7 @@ function gameState() {
         alert("We're gonna be rich!")
     }
 }
-
+//this line resets the game to 
 function gameStart() {
     targetScore = Math.floor(Math.random() * 100) + 25;
     currentScore = 0;
@@ -56,7 +56,7 @@ $(document).ready(function() {
 
     //this line determines whether or not the value of the gems change
     $(".red-gem").on("click", function() {
-        if (gems.refreshRedGem === true) {
+        if (gems.refreshRedGem) {
             gems.redGem = Math.floor(Math.random() * 13) + 1;
             gems.refreshRedGem = false;
             console.log(gems.redGem);
@@ -74,9 +74,9 @@ $(document).ready(function() {
         updateScore();
         gameState();
     });
-
+    //this line determines whether or not the value of the gems change
     $(".blue-gem").on("click", function() {
-        if (gems.refreshBlueGem === true) {
+        if (gems.refreshBlueGem) {
             gems.blueGem = Math.floor(Math.random() * 13) + 1;
             gems.refreshBlueGem = false;
             console.log(gems.blueGem);
@@ -92,9 +92,9 @@ $(document).ready(function() {
         updateScore();
         gameState();
     });
-
+    //this line determines whether or not the value of the gems change
     $(".green-gem").on("click", function() {
-        if (gems.refreshGreenGem === true) {
+        if (gems.refreshGreenGem) {
             gems.greenGem = Math.floor(Math.random() * 13) + 1;
             gems.refreshGreenGem = false;
             console.log(gems.greenGem);
@@ -110,9 +110,9 @@ $(document).ready(function() {
         updateScore();
         gameState();
     });
-
+    //this line determines whether or not the value of the gems change
     $(".purple-gem").on("click", function() {
-        if (gems.refreshPurpleGem === true) {
+        if (gems.refreshPurpleGem) {
             gems.purpleGem = Math.floor(Math.random() * 13) + 1;
             gems.refreshPurpleGem = false;
             console.log(gems.purpleGem)
@@ -129,8 +129,4 @@ $(document).ready(function() {
         gameState();
 
     });
-
-        updateScore();
-        gameState();
-        console.log("check me out")
 })
