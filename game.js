@@ -1,44 +1,58 @@
+//////////////////////////////////////////////
+// global variables
+//////////////////////////////////////////////
+
 var wins = 0;
 var losses = 0;
 var targetScore = Math.floor(Math.random() * 75) + 25;
 var currentScore = 0;
 var gems = {
     redGem: Math.floor(Math.random() * 13) + 1,
-    refreshRedGem: true,
     blueGem: Math.floor(Math.random() * 13) + 1,
-    refreshBlueGem: true,
     greenGem: Math.floor(Math.random() * 13) + 1,
-    refreshGreenGem: true,
     purpleGem: Math.floor(Math.random() * 13) + 1,
-    refreshPurpleGem: true
+    refreshGem: true
 };
 
 function gameStart() {
-	targetScore = Math.floor(Math.random() * 75) + 25;
-	currentScore = 0;
+    targetScore = Math.floor(Math.random() * 75) + 25;
+    currentScore = 0;
+    gems.refreshGem = true;
+    console.log('Lookie here, fresh gems!')
 }
 
 $(document).ready(function() {
 
-    //////////////////////////////////////////////
-    // global variables
-    //////////////////////////////////////////////
-
+	//this line determines whether or not the value of the gems change
     $(".red-gem").on("click", function() {
-        if (gems.refreshRedGem == true) {
+        if (gems.refreshGem == true) {
             gems.redGem = Math.floor(Math.random() * 13) + 1;
-            gems.refreshRedGem = false;
+            gems.refreshGem = false;
             console.log(gems.redGem)
-        } else if (targetScore > currentScore) {
-        	console.log(gems.redGem);
-        	currentScore = currentScore + gems.redGem;
-        	console.log("my target score is: " + targetScore);
-        	console.log("my current score is: " + currentScore)
-        } else if (targetScore < currentScore) {
-        	losses++;
-        	gameStart();
-      		alert("Oh shucks! My pickaxe broke!")
+        } 
+
+        //this line runs if your score is below the target score
+        if (targetScore > currentScore) {
+            console.log(gems.redGem);
+            currentScore = currentScore + gems.redGem;
+            console.log("my target score is: " + targetScore);
+            console.log("my current score is: " + currentScore)
         }
+
+        //this line determines whether a game is won or lost on click
+        if (targetScore < currentScore) {
+            losses++;
+            gameStart();
+            alert("Oh shucks! My pickaxe broke!")
+
+        }
+        //this line runs if your target score and the current score match
+        if (targetScore === currentScore) {
+            wins++;
+            gameStart();
+            alert("We're gonna be rich!")
+        }
+        console.log(gems.refreshGem)
     });
 
     $(".blue-gem").on("click", function() {
