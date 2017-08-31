@@ -1,3 +1,6 @@
+
+$(document).ready(function() {
+
 //////////////////////////////////////////////
 // global variables
 //////////////////////////////////////////////
@@ -25,11 +28,13 @@ function updateScore() {
 }
 //function updates the current game state
 function gameState() {
+
     //this line determines whether a game is won or lost on click
     if (targetScore < currentScore) {
         losses++;
         $(".losses").text(losses);
         gameStart();
+        updateScore();
         alert("Oh shucks! My pickaxe broke!")
 
     }
@@ -38,10 +43,11 @@ function gameState() {
         wins++;
         $(".wins").text(wins);
         gameStart();
+        updateScore();
         alert("We're gonna be rich!")
     }
 }
-//this line resets the game to 
+//this funciton resets the game
 function gameStart() {
     targetScore = Math.floor(Math.random() * 100) + 25;
     currentScore = 0;
@@ -51,8 +57,8 @@ function gameStart() {
     gems.refreshPurpleGem = true;
     console.log('Lookie here, fresh gems!')
 }
-
-$(document).ready(function() {
+//this assigns a target score value when the game loads
+updateScore();
 
     //this line determines whether or not the value of the gems change
     $(".red-gem").on("click", function() {
@@ -60,8 +66,6 @@ $(document).ready(function() {
             gems.redGem = Math.floor(Math.random() * 13) + 1;
             gems.refreshRedGem = false;
             console.log(gems.redGem);
-
-
         }
 
         //this line runs if your score is below the target score
@@ -71,7 +75,6 @@ $(document).ready(function() {
             console.log("my target score is: " + targetScore);
             console.log("my current score is: " + currentScore);
         }
-        updateScore();
         gameState();
     });
     //this line determines whether or not the value of the gems change
@@ -89,7 +92,6 @@ $(document).ready(function() {
             console.log("my target score is: " + targetScore);
             console.log("my current score is: " + currentScore)
         }
-        updateScore();
         gameState();
     });
     //this line determines whether or not the value of the gems change
@@ -107,7 +109,6 @@ $(document).ready(function() {
             console.log("my target score is: " + targetScore);
             console.log("my current score is: " + currentScore)
         }
-        updateScore();
         gameState();
     });
     //this line determines whether or not the value of the gems change
@@ -125,8 +126,6 @@ $(document).ready(function() {
             console.log("my target score is: " + targetScore);
             console.log("my current score is: " + currentScore)
         }
-        updateScore();
         gameState();
-
     });
 })
