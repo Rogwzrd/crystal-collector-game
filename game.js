@@ -75,6 +75,7 @@ updateScore();
             console.log("my target score is: " + targetScore);
             console.log("my current score is: " + currentScore);
         }
+        updateScore();
         gameState();
     });
     //this line determines whether or not the value of the gems change
@@ -92,6 +93,7 @@ updateScore();
             console.log("my target score is: " + targetScore);
             console.log("my current score is: " + currentScore)
         }
+        updateScore();
         gameState();
     });
     //this line determines whether or not the value of the gems change
@@ -109,6 +111,7 @@ updateScore();
             console.log("my target score is: " + targetScore);
             console.log("my current score is: " + currentScore)
         }
+        updateScore();
         gameState();
     });
     //this line determines whether or not the value of the gems change
@@ -126,6 +129,7 @@ updateScore();
             console.log("my target score is: " + targetScore);
             console.log("my current score is: " + currentScore)
         }
+        updateScore();
         gameState();
     });
 })

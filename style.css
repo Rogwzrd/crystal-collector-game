@@ -6,6 +6,9 @@ body {
 	background-image: url("./images/cave-background-image.png");
 }
 
+.parchment {
+	background-image: url(./images/parchment-paper.png);
+}
 .wrapper {
 	background-color: rgba(238, 238, 238, .5);
 	border-radius: 5px;
