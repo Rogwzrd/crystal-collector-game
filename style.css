@@ -4,11 +4,6 @@
 
 body {
 	background-image: url("./images/cave-background-image.png");
-
-}
-
-.m-3 {
-  margin: $spacer-y $spacer-x !important;
 }
 
 .wrapper {
